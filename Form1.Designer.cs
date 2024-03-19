@@ -28,11 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             loginBtn = new Button();
             toolStrip1 = new ToolStrip();
             toolStripComboBox1 = new ToolStripComboBox();
             userListElm = new ComboBox();
+            textBox1 = new TextBox();
+            errorProvider1 = new ErrorProvider(components);
+            errorProvider2 = new ErrorProvider(components);
             toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             SuspendLayout();
             // 
             // loginBtn
@@ -69,11 +75,28 @@
             userListElm.Size = new Size(442, 28);
             userListElm.TabIndex = 2;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(12, 157);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(377, 27);
+            textBox1.TabIndex = 3;
+            textBox1.Validating += textBox1_Validating;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            errorProvider2.ContainerControl = this;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(464, 450);
+            Controls.Add(textBox1);
             Controls.Add(userListElm);
             Controls.Add(toolStrip1);
             Controls.Add(loginBtn);
@@ -82,6 +105,8 @@
             Load += Form1_Load;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -92,5 +117,8 @@
         private ToolStrip toolStrip1;
         private ToolStripComboBox toolStripComboBox1;
         private ComboBox userListElm;
+        private TextBox textBox1;
+        private ErrorProvider errorProvider1;
+        private ErrorProvider errorProvider2;
     }
 }

@@ -3,7 +3,7 @@ using WinFormsApp1.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class Form1 : BaseForm
     {
         // Declare the ContextMenuStrip control.
 
@@ -89,7 +89,8 @@ namespace WinFormsApp1
                 MessageBox.Show("About");
             };
 
-            newFileItem.Click += delegate {
+            newFileItem.Click += delegate
+            {
                 var formElm = new Dashboard();
                 this.Hide();
                 formElm.ShowDialog(this);
@@ -99,7 +100,14 @@ namespace WinFormsApp1
 
         private void LoginBtn_Click(object? sender, EventArgs e)
         {
-            MessageBox.Show("Login clicked");
+            var quantityForm = new ReadonlyQuantityForm();
+            quantityForm.ShowDialog();
+
+
+            if(ValidateChildren(ValidationConstraints.Enabled))
+            {
+                MessageBox.Show("Login clicked");
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -110,6 +118,20 @@ namespace WinFormsApp1
         private void loginBtn_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(textBox1.Text == "not_valid")
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(textBox1, "Invalid data");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(textBox1, "");
+            }
         }
     }
 }
