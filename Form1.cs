@@ -1,4 +1,6 @@
+using MySqlConnector;
 using System.Windows.Forms;
+using WinFormsApp1.Controls;
 using WinFormsApp1.Forms;
 
 namespace WinFormsApp1
@@ -20,6 +22,10 @@ namespace WinFormsApp1
             AddMenu();
 
             BindUserList();
+
+            var x = new FirstRunControl("Item", "Value");
+            x.Location = new Point(Top, 40);
+            this.Controls.Add(x);
 
         }
 
@@ -103,10 +109,37 @@ namespace WinFormsApp1
             var quantityForm = new ReadonlyQuantityForm();
             quantityForm.ShowDialog();
 
-
             if(ValidateChildren(ValidationConstraints.Enabled))
             {
                 MessageBox.Show("Login clicked");
+
+                using (var conn = new MySqlConnection(ConnectionStringProvider.GetConnectionString()))
+                {
+                    var query = "UPDATE login_information SET LoginCount = LoginCount + 1 WHERE Id = @id";
+                    conn.Open();
+                    var command = new MySqlCommand(query, conn);
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        Direction = System.Data.ParameterDirection.Input,
+                        ParameterName = "id",
+                        Value = 1
+                    });
+                    command.ExecuteNonQuery();
+                }
+                // For Read
+                using (var conn = new MySqlConnection(ConnectionStringProvider.GetConnectionString()))
+                {
+                    var query = "SELECT * FROM login_information";
+                    conn.Open();
+                    var command = new MySqlCommand(query, conn);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var id = reader.GetInt32("id");
+                        var count = reader.GetInt32("LoginCount");
+                        MessageBox.Show($"Id: {id}, Count: {count}");
+                    }
+                }
             }
         }
 
