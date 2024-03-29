@@ -1,4 +1,5 @@
 using MySqlConnector;
+using System.Data;
 using System.Windows.Forms;
 using WinFormsApp1.Controls;
 using WinFormsApp1.Forms;
@@ -26,6 +27,66 @@ namespace WinFormsApp1
             var x = new FirstRunControl("Item", "Value");
             x.Location = new Point(Top, 40);
             this.Controls.Add(x);
+
+            openBtn.Click += OpenBtn_Click;
+
+        }
+
+        private void OpenBtn_Click(object? sender, EventArgs e)
+        {
+            var dataset = new DataSet();
+
+            var dt = new DataTable("unit");
+            dataset.Tables.Add(dt);
+
+            dt.Columns.Add(new DataColumn("Id", typeof(int)));
+            dt.Columns.Add(new DataColumn("Name", typeof(string)));
+            dt.Columns.Add(new DataColumn("IsActive", typeof(bool)));
+
+            dt.PrimaryKey = new []{
+                dt.Columns["Id"]
+            };
+
+            var row = dt.NewRow();
+            row["Id"] = 1;
+            row["Name"] = "ItemX";
+            row["IsActive"] = true;
+            dt.Rows.Add(row);
+
+            row = dt.NewRow();
+            row["Id"] = 2;
+            row["Name"] = "ItemY";
+            row["IsActive"] = true;
+            dt.Rows.Add(row: row);
+
+
+            var productDt = new DataTable("product");
+            
+            dataset.Tables.Add(productDt);
+
+            productDt.Columns.Add(new DataColumn("Id", typeof(int)));
+            productDt.Columns.Add(new DataColumn("Name", typeof(string)));
+            productDt.Columns.Add(new DataColumn("UnitId", typeof(int)));
+
+            productDt.PrimaryKey = new[] {
+                productDt.Columns["Id"]
+            };
+
+            var foreignKeyRelation = new DataRelation("fk_unit_id", dt.Columns["Id"], productDt.Columns["UnitId"]);
+
+            productDt.ParentRelations.Add(foreignKeyRelation);
+
+            row = productDt.NewRow();
+            row["Id"] = 1;
+            row["Name"] = "ItemX";
+            row["UnitId"] = 1;
+            productDt.Rows.Add(row: row);
+
+            row = productDt.NewRow();
+            row["Id"] = 2;
+            row["Name"] = "ItemX";
+            row["UnitId"] = 6;
+            productDt.Rows.Add(row: row);
 
         }
 

@@ -36,6 +36,7 @@
             textBox1 = new TextBox();
             errorProvider1 = new ErrorProvider(components);
             errorProvider2 = new ErrorProvider(components);
+            openBtn = new Button();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
@@ -70,7 +71,7 @@
             // userListElm
             // 
             userListElm.FormattingEnabled = true;
-            userListElm.Location = new Point(10, 42);
+            userListElm.Location = new Point(9, 95);
             userListElm.Name = "userListElm";
             userListElm.Size = new Size(442, 28);
             userListElm.TabIndex = 2;
@@ -91,11 +92,21 @@
             // 
             errorProvider2.ContainerControl = this;
             // 
+            // openBtn
+            // 
+            openBtn.Location = new Point(9, 12);
+            openBtn.Name = "openBtn";
+            openBtn.Size = new Size(443, 65);
+            openBtn.TabIndex = 4;
+            openBtn.Text = "Dataset Manager";
+            openBtn.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(464, 450);
+            Controls.Add(openBtn);
             Controls.Add(textBox1);
             Controls.Add(userListElm);
             Controls.Add(toolStrip1);
@@ -120,5 +131,6 @@
         private TextBox textBox1;
         private ErrorProvider errorProvider1;
         private ErrorProvider errorProvider2;
+        private Button openBtn;
     }
 }
