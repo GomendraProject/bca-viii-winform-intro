@@ -37,6 +37,7 @@
             errorProvider1 = new ErrorProvider(components);
             errorProvider2 = new ErrorProvider(components);
             openBtn = new Button();
+            dgvOpenBtn = new Button();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
@@ -44,9 +45,10 @@
             // 
             // loginBtn
             // 
-            loginBtn.Location = new Point(9, 391);
+            loginBtn.Location = new Point(8, 293);
+            loginBtn.Margin = new Padding(3, 2, 3, 2);
             loginBtn.Name = "loginBtn";
-            loginBtn.Size = new Size(443, 29);
+            loginBtn.Size = new Size(388, 22);
             loginBtn.TabIndex = 0;
             loginBtn.Text = "button1";
             loginBtn.UseVisualStyleBackColor = true;
@@ -57,30 +59,32 @@
             toolStrip1.Dock = DockStyle.Bottom;
             toolStrip1.ImageScalingSize = new Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripComboBox1 });
-            toolStrip1.Location = new Point(0, 422);
+            toolStrip1.Location = new Point(0, 313);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(464, 28);
+            toolStrip1.Size = new Size(406, 25);
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
             // toolStripComboBox1
             // 
             toolStripComboBox1.Name = "toolStripComboBox1";
-            toolStripComboBox1.Size = new Size(121, 28);
+            toolStripComboBox1.Size = new Size(106, 25);
             // 
             // userListElm
             // 
             userListElm.FormattingEnabled = true;
-            userListElm.Location = new Point(9, 95);
+            userListElm.Location = new Point(8, 71);
+            userListElm.Margin = new Padding(3, 2, 3, 2);
             userListElm.Name = "userListElm";
-            userListElm.Size = new Size(442, 28);
+            userListElm.Size = new Size(387, 23);
             userListElm.TabIndex = 2;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(12, 157);
+            textBox1.Location = new Point(10, 118);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(377, 27);
+            textBox1.Size = new Size(384, 23);
             textBox1.TabIndex = 3;
             textBox1.Validating += textBox1_Validating;
             // 
@@ -94,23 +98,36 @@
             // 
             // openBtn
             // 
-            openBtn.Location = new Point(9, 12);
+            openBtn.Location = new Point(8, 9);
+            openBtn.Margin = new Padding(3, 2, 3, 2);
             openBtn.Name = "openBtn";
-            openBtn.Size = new Size(443, 65);
+            openBtn.Size = new Size(388, 49);
             openBtn.TabIndex = 4;
             openBtn.Text = "Dataset Manager";
             openBtn.UseVisualStyleBackColor = true;
             // 
+            // dgvOpenBtn
+            // 
+            dgvOpenBtn.BackColor = Color.SpringGreen;
+            dgvOpenBtn.Location = new Point(8, 193);
+            dgvOpenBtn.Name = "dgvOpenBtn";
+            dgvOpenBtn.Size = new Size(386, 53);
+            dgvOpenBtn.TabIndex = 5;
+            dgvOpenBtn.Text = "Open DGV";
+            dgvOpenBtn.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(464, 450);
+            ClientSize = new Size(406, 338);
+            Controls.Add(dgvOpenBtn);
             Controls.Add(openBtn);
             Controls.Add(textBox1);
             Controls.Add(userListElm);
             Controls.Add(toolStrip1);
             Controls.Add(loginBtn);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -132,5 +149,6 @@
         private ErrorProvider errorProvider1;
         private ErrorProvider errorProvider2;
         private Button openBtn;
+        private Button dgvOpenBtn;
     }
 }

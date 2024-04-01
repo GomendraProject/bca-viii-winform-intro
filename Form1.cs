@@ -6,7 +6,7 @@ using WinFormsApp1.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class Form1 : BaseForm
+    public partial class Form1 : Form
     {
         // Declare the ContextMenuStrip control.
 
@@ -19,7 +19,6 @@ namespace WinFormsApp1
 
             AddContextMenu();
 
-
             AddMenu();
 
             BindUserList();
@@ -29,6 +28,10 @@ namespace WinFormsApp1
             this.Controls.Add(x);
 
             openBtn.Click += OpenBtn_Click;
+
+            dgvOpenBtn.Click += delegate {
+                new DgvForm().ShowDialog();
+            };
 
         }
 

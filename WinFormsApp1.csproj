@@ -16,6 +16,9 @@
     <Compile Update="Forms\QuantityUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\DgvForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>
