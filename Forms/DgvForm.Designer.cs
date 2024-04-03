@@ -33,15 +33,19 @@ partial class DgvForm
     {
         itemsDgv = new DataGridView();
         updateBtn = new Button();
+        activeOnlyDgv = new DataGridView();
         ((ISupportInitialize)itemsDgv).BeginInit();
+        ((ISupportInitialize)activeOnlyDgv).BeginInit();
         SuspendLayout();
         // 
         // itemsDgv
         // 
         itemsDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        itemsDgv.Location = new Point(8, 123);
+        itemsDgv.Location = new Point(9, 164);
+        itemsDgv.Margin = new Padding(3, 4, 3, 4);
         itemsDgv.Name = "itemsDgv";
-        itemsDgv.Size = new Size(785, 290);
+        itemsDgv.RowHeadersWidth = 51;
+        itemsDgv.Size = new Size(897, 387);
         itemsDgv.TabIndex = 0;
         // 
         // updateBtn
@@ -49,23 +53,36 @@ partial class DgvForm
         updateBtn.BackColor = Color.DarkCyan;
         updateBtn.Font = new Font("Segoe UI", 18F);
         updateBtn.ForeColor = Color.Transparent;
-        updateBtn.Location = new Point(177, 23);
+        updateBtn.Location = new Point(202, 31);
+        updateBtn.Margin = new Padding(3, 4, 3, 4);
         updateBtn.Name = "updateBtn";
-        updateBtn.Size = new Size(403, 64);
+        updateBtn.Size = new Size(461, 85);
         updateBtn.TabIndex = 1;
         updateBtn.Text = "Update";
         updateBtn.UseVisualStyleBackColor = false;
         // 
+        // activeOnlyDgv
+        // 
+        activeOnlyDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        activeOnlyDgv.Location = new Point(912, 164);
+        activeOnlyDgv.Name = "activeOnlyDgv";
+        activeOnlyDgv.RowHeadersWidth = 51;
+        activeOnlyDgv.Size = new Size(877, 387);
+        activeOnlyDgv.TabIndex = 2;
+        // 
         // DgvForm
         // 
-        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(800, 450);
+        ClientSize = new Size(1801, 600);
+        Controls.Add(activeOnlyDgv);
         Controls.Add(updateBtn);
         Controls.Add(itemsDgv);
+        Margin = new Padding(3, 4, 3, 4);
         Name = "DgvForm";
         Text = "DgvForm";
         ((ISupportInitialize)itemsDgv).EndInit();
+        ((ISupportInitialize)activeOnlyDgv).EndInit();
         ResumeLayout(false);
     }
 
@@ -73,4 +90,5 @@ partial class DgvForm
 
     private DataGridView itemsDgv;
     private Button updateBtn;
+    private DataGridView activeOnlyDgv;
 }

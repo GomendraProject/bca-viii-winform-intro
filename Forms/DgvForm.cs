@@ -47,9 +47,14 @@ public partial class DgvForm : Form
             itemsDgv.Columns.Add(column1);
         }
 
-        var commandBuilder = new MySqlCommandBuilder(adapter);
+        new MySqlCommandBuilder(adapter);
 
         itemsDgv.DataSource = dataset;
         itemsDgv.DataMember = "item_list";
+
+        var activeOnlyDataView = new DataView(dataset.Tables["item_list"]);
+        activeOnlyDataView.RowFilter = "IsActive = 1";
+
+        activeOnlyDgv.DataSource = activeOnlyDataView;
     }
 }
