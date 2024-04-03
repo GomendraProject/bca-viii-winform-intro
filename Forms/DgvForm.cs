@@ -52,9 +52,38 @@ public partial class DgvForm : Form
         itemsDgv.DataSource = dataset;
         itemsDgv.DataMember = "item_list";
 
+        // Data view
         var activeOnlyDataView = new DataView(dataset.Tables["item_list"]);
         activeOnlyDataView.RowFilter = "IsActive = 1";
 
         activeOnlyDgv.DataSource = activeOnlyDataView;
+
+        // Stored Procedure
+
+        //LoadCount();
+    }
+
+    private void LoadCount()
+    {
+        var conn = new MySqlConnection(ConnectionStringProvider.GetConnectionString());
+        var command = new MySqlCommand("ItemCount", conn);
+        command.CommandType = CommandType.StoredProcedure;
+        command.Parameters.Add(new MySqlParameter()
+        {
+            Direction = System.Data.ParameterDirection.Input,
+            ParameterName = "itemStatus",
+            Value = 1
+        });
+        var itemCountParam = new MySqlParameter()
+        {
+            Direction = System.Data.ParameterDirection.Output,
+            ParameterName = "itemCount",
+            Value = 0
+        };
+        command.Parameters.Add(itemCountParam);
+
+        conn.Open();
+        command.ExecuteNonQuery();
+        MessageBox.Show("Active item count: " + itemCountParam.Value);
     }
 }
